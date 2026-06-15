@@ -8,12 +8,12 @@ The plugin fetches these JSON files at runtime (one per locale). Updates here go
 
 ```
 tm-es.json     — Spanish (Spain)
-tm-ptbr.json   — Brazilian Portuguese  (coming soon)
-tm-it.json     — Italian               (coming soon)
-tm-de.json     — German                (coming soon)
-tm-pl.json     — Polish                (coming soon)
-tm-ja.json     — Japanese              (coming soon)
-tm-fr.json     — French                (coming soon)
+tm-ptbr.json   — Brazilian Portuguese
+tm-it.json     — Italian        
+tm-de.json     — German
+tm-pl.json     — Polish
+tm-ja.json     — Japanese
+tm-fr.json     — French
 
 tools/build_tm.py — converts .numbers files → tm-<locale>.json
 ```
