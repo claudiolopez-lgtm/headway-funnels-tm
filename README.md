@@ -7,13 +7,16 @@ The plugin fetches these JSON files at runtime (one per locale). Updates here go
 ## Files
 
 ```
-tm-es.json     — Spanish (Spain)
+tm-es.json     — Latin American Spanish (neutral)
 tm-ptbr.json   — Brazilian Portuguese
-tm-it.json     — Italian        
-tm-de.json     — German
 tm-pl.json     — Polish
 tm-ja.json     — Japanese
+tm-it.json     — Italian
+tm-de.json     — German
 tm-fr.json     — French
+tm-ro.json     — Romanian
+tm-cs.json     — Czech
+tm-hu.json     — Hungarian
 
 tools/build_tm.py — converts .numbers files → tm-<locale>.json
 ```
@@ -37,10 +40,10 @@ Each `tm-*.json` is a flat object mapping English source strings to their approv
 
 ## Adding a new locale
 
-1. Get a `.numbers` TM file for the locale
-2. Run `python tools/build_tm.py path/to/your.numbers <locale>` (where `<locale>` is one of `ptbr`, `it`, `de`, `pl`, `ja`, `fr`)
+1. Get a `.numbers` TM file for the locale (or a Crowdin `.xliff` export)
+2. Run `python tools/build_tm.py path/to/your.numbers <locale>` (where `<locale>` is one of `ptbr`, `it`, `de`, `pl`, `ja`, `fr`, `ro`, `cs`, `hu`)
 3. Commit the resulting `tm-<locale>.json`
-4. Enable the locale tab in the plugin's `ui.html`
+4. Enable the locale tab in the plugin's `ui.html` and add its system prompt to the `SYSTEMS` object
 
 ## Updating from a fresh .numbers file
 
@@ -58,7 +61,7 @@ The script picks the **most common** Target translation when the same English so
 
 On locale switch, the plugin:
 1. Tries `figma.clientStorage` first (instant if cached)
-2. Falls back to `https://raw.githubusercontent.com/<your-username>/headway-funnels-tm/main/tm-<locale>.json`
+2. Falls back to `https://raw.githubusercontent.com/claudiolopez-lgtm/headway-funnels-tm/main/tm-<locale>.json`
 3. Stores the result in `clientStorage` with a 1-hour TTL
 
-When you commit a change here, users will see it after their local cache expires (≤1 hour) — or immediately if they hit the "Refresh TM" button in the plugin.
+When you commit a change here, users will see it after their local cache expires (≤1 hour) — or immediately after reloading the plugin.
